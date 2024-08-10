@@ -6,6 +6,7 @@ const Hero = () => {
       <div className='text-center'>
         <h1 className='text-6xl font-bold text-white'>Welcome to PROFO</h1>
         <p className='text-xl text-white'>The best platform for your business</p>
+        <h2 className='mt-4'> test </h2>
       </div>
     </div>
   )
