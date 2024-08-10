@@ -77,10 +77,12 @@ const Resume = () => {
             {generalData.jobTitle}
           </p>
         </div>
-        <button
-          className="absolute right-0 top-0 shadow-[inset_0_0_0_1px_#616467] text-black px-4 py-2 rounded-full text-sm tracking-widest uppercase font-bold bg-transparent hover:bg-[#005ab4] hover:text-white dark:text-neutral-200 transition duration-200">
-          Download CV
-        </button>
+        <a href="./cv.pdf" download>
+          <button
+            className="absolute right-0 top-0 shadow-[inset_0_0_0_1px_#616467] text-black px-4 py-2 rounded-full text-sm tracking-widest uppercase font-bold bg-transparent hover:bg-[#005ab4] hover:text-white dark:text-neutral-200 transition duration-200">
+            Download CV
+          </button>
+        </a>
       </section>
       <section className="ml-3 my-5 text-sm">
         <h3 className="mb-1 text-slate-900 dark:text-slate-100">About</h3>
