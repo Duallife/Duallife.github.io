@@ -5,8 +5,8 @@ import { navItems } from '@/data'
 const Nav = () => {
   return (
     <div>
-    <FloatingNav navItems={navItems}/>
-  </div>
+      <FloatingNav navItems={navItems} />
+    </div>
   )
 }
 

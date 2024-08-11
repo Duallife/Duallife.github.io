@@ -2,8 +2,15 @@ import React from 'react'
 import { generalData } from '@/data/general'
 import { contentData } from '@/data/content'
 import type { Content } from '@/data/content'
+import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa'
 
 type ContentProps = Content;
+
+const iconMap: { [key: string]: JSX.Element } = {
+  mail: <FaEnvelope />,
+  github: <FaGithub />,
+  linkedin: <FaLinkedin />,
+};
 
 const Content: React.FC<ContentProps> = ({ title, items }) => {
   return (
@@ -68,12 +75,13 @@ const Resume = () => {
           alt={generalData.name}
           className="w-20 h-20 rounded-full"
         /> */}
+      <hr className="border-t-2 border-slate-300 dark:border-slate-700 p-5 " />
       <section  className="relative m-5">
-        <div className="text-center">
-          <h1 className="mb-1 text-4xl text-slate-900 dark:text-slate-100">
+        <div className="text-center pb-4">
+          <h1 className="mb-3 text-4xl text-slate-900 dark:text-slate-100 font-semibold">
             {generalData.name}
           </h1>
-          <p className="text-slate-600 dark:text-slate-300 text-md">
+          <p className="text-slate-600 dark:text-slate-300 text-md uppercase font-light">
             {generalData.jobTitle}
           </p>
         </div>
@@ -84,26 +92,29 @@ const Resume = () => {
           </button>
         </a>
       </section>
-      <section className="text-sm">
+      {/* <section className="text-sm">
         <div className='bg-white dark:bg-slate-900 rounded-lg shadow-md p-5'>
         <h3 className="mb-1 text-slate-900 dark:text-slate-100">About</h3>
         <div className="text-slate-600 dark:text-slate-300">
           <p>{generalData.about}</p>
         </div>
         </div>
-      </section>
-      <div className='bg-white dark:bg-slate-900 rounded-lg shadow-md pb-1'>
+      </section> */}
+      <div className='bg-deepPurple border border-white/[0.1] rounded-2xl shadow-md pb-1'>
         {contentData.map((content, index) => {
           return <Content {...content} key={index} />;
         })}
       </div>
       <section id="contact" className="my-5 text-sm">
-        <div className='bg-white dark:bg-slate-900 rounded-lg shadow-md p-5'>
+        <div className='bg-deepPurple border border-white/[0.1] rounded-2xl shadow-md p-5'>
           <h3 className="mb-6">Contact</h3>
           <div className="flex flex-col gap-6">
             {generalData.contacts.map((contact, index) => {
               return (
                 <div className="flex" key={index}>
+                  <div className='mr-2 mt-1'>
+                    {iconMap[contact.icon]}
+                  </div>
                   <div className="mr-8 max-w-[100px] w-full text-slate-400 dark:text-slate-400">
                     {contact.label}
                   </div>
