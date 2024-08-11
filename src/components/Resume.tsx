@@ -7,7 +7,7 @@ type ContentProps = Content;
 
 const Content: React.FC<ContentProps> = ({ title, items }) => {
   return (
-    <section className="my-14 text-sm p-5">
+    <section className="my-5 text-sm p-5 pb-8">
       <h3 className="mb-6">{title}</h3>
       <div className="flex flex-col gap-6 -mb-10">
         {items.map((item, index) => {
@@ -62,13 +62,13 @@ const Content: React.FC<ContentProps> = ({ title, items }) => {
 const Resume = () => {
 
   return (
-    <section id="about" className='pt-5 pb-5'>
+    <section id="resume" className='pt-5 pb-5'>
       {/* <img
           src={generalData.avatar}
           alt={generalData.name}
           className="w-20 h-20 rounded-full"
         /> */}
-      <section className="relative m-5">
+      <section  className="relative m-5">
         <div className="text-center">
           <h1 className="mb-1 text-4xl text-slate-900 dark:text-slate-100">
             {generalData.name}
@@ -79,15 +79,17 @@ const Resume = () => {
         </div>
         <a href="./cv.pdf" download>
           <button
-            className="absolute right-0 top-0 shadow-[inset_0_0_0_1px_#616467] text-black px-4 py-2 rounded-full text-sm tracking-widest uppercase font-bold bg-transparent hover:bg-[#005ab4] hover:text-white dark:text-neutral-200 transition duration-200">
+            className="absolute right-0 top-0 shadow-[inset_0_0_0_2px_#616467] text-black px-4 py-2 rounded-full text-xs tracking-widest uppercase font-bold bg-transparent hover:bg-[#005ab4] dark:text-white transition duration-200">
             Download CV
           </button>
         </a>
       </section>
-      <section className="ml-3 my-5 text-sm">
+      <section className="text-sm">
+        <div className='bg-white dark:bg-slate-900 rounded-lg shadow-md p-5'>
         <h3 className="mb-1 text-slate-900 dark:text-slate-100">About</h3>
         <div className="text-slate-600 dark:text-slate-300">
           <p>{generalData.about}</p>
+        </div>
         </div>
       </section>
       <div className='bg-white dark:bg-slate-900 rounded-lg shadow-md pb-1'>
@@ -95,7 +97,7 @@ const Resume = () => {
           return <Content {...content} key={index} />;
         })}
       </div>
-      <section className="my-5 text-sm">
+      <section id="contact" className="my-5 text-sm">
         <div className='bg-white dark:bg-slate-900 rounded-lg shadow-md p-5'>
           <h3 className="mb-6">Contact</h3>
           <div className="flex flex-col gap-6">
