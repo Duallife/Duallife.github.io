@@ -1,4 +1,5 @@
-import Grid from "@/components/Grid";
+import Footer from "@/components/Footer";
+import Grid from "@/components/ui/Grid";
 import Hero from "@/components/Hero";
 import Nav from "@/components/Nav";
 import Resume from "@/components/Resume";
@@ -17,6 +18,7 @@ export default function Home() {
         <Hero />
         <Grid />
         <Resume />
+        <Footer />
       </div>
     </main>
   );

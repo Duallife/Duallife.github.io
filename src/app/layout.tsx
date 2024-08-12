@@ -6,8 +6,8 @@ import { ThemeProvider } from "./provider";
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Ricky T's Web",
-  description: "A personal website",
+  title: "Ricky Tse's Web",
+  description: "Ricky Tse's personal website",
 };
 
 export default function RootLayout({

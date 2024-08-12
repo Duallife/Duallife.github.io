@@ -1,5 +1,5 @@
 import React from 'react'
-import { BentoGrid, BentoGridItem } from './ui/bento-grid'
+import { BentoGrid, BentoGridItem } from './bento-grid'
 import { gridItems } from '@/data'
 
 const Grid = () => {
@@ -20,6 +20,7 @@ const Grid = () => {
                     img={item.img}
                     imgClassName={item.imgClassName}
                     titleClassName={item.titleClassName}
+                    website={item.website}
                 />
             ))}
         </BentoGrid>

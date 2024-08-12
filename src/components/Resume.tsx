@@ -69,7 +69,7 @@ const Content: React.FC<ContentProps> = ({ title, items }) => {
 const Resume = () => {
 
   return (
-    <section id="resume" className='pt-5 pb-5'>
+    <section id="resume" className='pt-5'>
       {/* <img
           src={generalData.avatar}
           alt={generalData.name}
