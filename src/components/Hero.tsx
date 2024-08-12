@@ -15,14 +15,14 @@ const Hero = () => {
         <Spotlight className="left-80 top-28 h-[80vh] w-[50vw]" fill="blue" />
       </div>
 
-      <div className='w-full flex flex-col lg:flex-row justify-between items-stretch mt-5 '>
+      <div className='w-full flex flex-col lg:flex-row justify-between items-stretch -mt-5 '>
         <div className='flex flex-col lg:w-1/2 p-5'>
           <TextGenerateEffect
             className='text-4xl lg:text-8xl md:text-8xl sm:text-4xl font-bold text-white text-center lg:text-start'
             words='Welcome'
           />
           <TextGenerateEffect
-            className='uppercase tracking-widest font-light text-lg ml-3 -mt-5 text-center lg:text-start'
+            className='uppercase tracking-widest font-light text-lg ml-3 -mt-8 text-center lg:text-start'
             words='By Ricky Tse'
           />
         </div>

@@ -22,6 +22,10 @@ const config = {
       center: true,
       padding: "2rem",
       screens: {
+        "sm": '480px', // Small devices (e.g., phones)
+        "md": '768px', // Medium devices (e.g., tablets)
+        "lg": '1024px', // Large devices (e.g., laptops)
+        "xl": '1280px', // Extra large devices (e.g., desktops)
         "2xl": "1400px",
       },
     },

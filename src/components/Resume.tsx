@@ -2,7 +2,7 @@ import React from 'react'
 import { generalData } from '@/data/general'
 import { contentData } from '@/data/content'
 import type { Content } from '@/data/content'
-import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa'
+import { FaEnvelope, FaGithub, FaLinkedin, FaDownload } from 'react-icons/fa'
 
 type ContentProps = Content;
 
@@ -20,7 +20,7 @@ const Content: React.FC<ContentProps> = ({ title, items }) => {
         {items.map((item, index) => {
           return (
             <div className="flex" key={index}>
-              <div className="mr-8 max-w-[100px] w-full text-slate-400 dark:text-slate-400">
+              <div className="lg:mr-8 md:mr-6 sm:mr-5 max-w-[100px] w-full text-slate-400 dark:text-slate-400">
                 {item.date}
               </div>
               <div className="flex flex-col flex-1">
@@ -88,7 +88,8 @@ const Resume = () => {
         <a href="./cv.pdf" download>
           <button
             className="absolute right-0 top-0 shadow-[inset_0_0_0_2px_#616467] text-black px-4 py-2 rounded-full text-xs tracking-widest uppercase font-bold bg-transparent hover:bg-[#005ab4] dark:text-white transition duration-200">
-            Download CV
+            <span className="hidden sm:inline">Download </span>
+            <span className="sm:hidden"><FaDownload /></span>
           </button>
         </a>
       </section>
