@@ -14,7 +14,7 @@ export const BentoGrid = ({
     <div
       className={cn(
         // change gap-4 to gap-8, change grid-cols-3 to grid-cols-5, remove md:auto-rows-[18rem], add responsive code
-        "grid grid-cols-1 md:grid-cols-6 lg:grid-cols-5 md:grid-rows-9 lg:grid-rows-8 gap-4 lg:gap-8 mx-auto",
+        "grid grid-cols-1 md:grid-cols-6 lg:grid-cols-5 md:grid-rows-10 lg:grid-rows-9 gap-4 lg:gap-8 mx-auto",
         className
       )}
     >
@@ -32,6 +32,7 @@ export const BentoGridItem = ({
   imgClassName,
   titleClassName,
   website,
+  hoverEffect = true,
 }: {
   className?: string;
   id: number;
@@ -41,6 +42,7 @@ export const BentoGridItem = ({
   imgClassName?: string;
   titleClassName?: string;
   website?: string;
+  hoverEffect?: boolean;
 }) => {
 
   return (
@@ -65,21 +67,23 @@ export const BentoGridItem = ({
         )}
         <div className={`h-full relative z-10`}>
           <div
-            className="group-hover/bento:translate-x-2 transition duration-200 relative md:h-full min-h-40 flex flex-col justify-end px-5 p-3 lg:p-6"
+            className={`transition duration-200 relative md:h-full min-h-40 flex flex-col justify-end px-5 p-3 lg:p-6
+              ${hoverEffect ? 'group-hover/bento:translate-x-2' : ''
+              }`}
           >
             {id === 7 ? (
               <>
-                <div className={cn(titleClassName,`text-lg lg:text-3xl font-bold`)}>
+                <div className={cn(titleClassName, `text-lg md:text-xl lg:text-3xl font-bold`)}>
                   {title}
                 </div>
                 <GlobeDemo />
               </>
             ) : (
               <>
-                <div className="font-extralight md:text-xs lg:text-base text-sm text-[#C1C2D3] text-right">
+                <div className="font-light md:text-xs lg:text-base text-sm text-[#C1C2D3] text-right">
                   {description}
                 </div>
-                <div className={cn(titleClassName,`text-lg lg:text-3xl font-bold text-right`)}>
+                <div className={cn(titleClassName, `text-lg md:text-xl lg:text-3xl font-bold text-right`)}>
                   {title}
                 </div>
               </>

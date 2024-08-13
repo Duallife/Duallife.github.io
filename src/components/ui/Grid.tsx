@@ -21,6 +21,7 @@ const Grid = () => {
                     imgClassName={item.imgClassName}
                     titleClassName={item.titleClassName}
                     website={item.website}
+                    hoverEffect={item.hoverEffect}
                 />
             ))}
         </BentoGrid>

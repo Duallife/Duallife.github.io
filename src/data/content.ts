@@ -4,7 +4,7 @@ export const contentData = [
     items: [
       {
         title: "Columbia University",
-        subTitle: "MSc - Mechanical Engineering",
+        subTitle: "M.S. - Mechanical Engineering",
         date: "Sept 2024 - Now",
       },
       {

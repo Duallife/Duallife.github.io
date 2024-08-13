@@ -4,11 +4,7 @@ export const generalData = {
     jobTitle: "Mechanical Engineer",
     website: "https://duallife.github.io/APP/",
     about:
-        `Hello! I'm Ricky Tse, a dedicated Mechanical Engineer from Hong Kong. I have extensive knowledge in fields like CAD
-        , FEA, PCB design, robot control algorithms, and more. I was an iPhone Product Design intern at Apple and worked as a
-         design engineer at Pointfit Tech Ltd. I studied design engineering during my undergraduate years in Hong Kong and am
-          currently pursuing graduate studies in Mechanical Engineering at Columbia University. I'm passionate about innovative
-           solutions and have been recognized for my work in various engineering challenges. Feel free to connect with me!`,
+        `Hi, I'm Ricky Tse, a Mechanical Engineer from Hong Kong pursuing graduate studies at Columbia University. My expertise includes CAD, FEA, PCB design, and robot control algorithms. I've interned at Apple for iPhone Product Design and worked as a design engineer at Pointfit Tech Ltd. With a passion for innovation, I've been recognized in various engineering challenges. Let's connect!`,
     contacts: [
         {
             label: "Email",
