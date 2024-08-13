@@ -23,7 +23,7 @@ const Hero = () => {
           />
           <TextGenerateEffect
             className='uppercase tracking-widest font-light text-lg ml-3 -mt-8 text-center lg:text-start'
-            words='By Ricky Tse'
+            words='A personal web by Ricky Tse'
           />
         </div>
         <div className='flex flex-col items-end justify-end lg:w-1/2 p-5'>

@@ -39,7 +39,7 @@ export const navItems = [
 
     {
       id: 4,
-      title: "Apple Inc - iPhone",
+      title: "Apple Inc - iPhone PD",
       description: "Automated script detecting potential hardware design issues",
       className: "md:col-span-3 md:row-span-2",
       imgClassName: "ml-2 scale-110",

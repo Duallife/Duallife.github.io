@@ -73,7 +73,7 @@ export const BentoGridItem = ({
           >
             {id === 7 ? (
               <>
-                <div className={cn(titleClassName, `text-lg md:text-xl lg:text-3xl font-bold`)}>
+                <div className={cn(titleClassName, `text-lg md:text-2xl lg:text-3xl font-bold`)}>
                   {title}
                 </div>
                 <GlobeDemo />
@@ -83,7 +83,7 @@ export const BentoGridItem = ({
                 <div className="font-light md:text-xs lg:text-base text-sm text-[#C1C2D3] text-right">
                   {description}
                 </div>
-                <div className={cn(titleClassName, `text-lg md:text-xl lg:text-3xl font-bold text-right`)}>
+                <div className={cn(titleClassName, `text-lg md:text-2xl lg:text-3xl font-bold text-right`)}>
                   {title}
                 </div>
               </>

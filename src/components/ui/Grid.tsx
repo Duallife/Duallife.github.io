@@ -6,7 +6,7 @@ const Grid = () => {
   return (
     <section className="pt-2" id="projects">
       <div className="text-center">
-        <h1 className="mb-7 text-4xl text-slate-900 dark:text-slate-100">
+        <h1 className="mb-10 text-4xl text-slate-900 dark:text-slate-100">
           Projects
         </h1>
         <BentoGrid>

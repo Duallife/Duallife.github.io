@@ -69,13 +69,13 @@ const Content: React.FC<ContentProps> = ({ title, items }) => {
 const Resume = () => {
 
   return (
-    <section id="resume" className='pt-5'>
+    <section id="resume" className='pt-7'>
       {/* <img
           src={generalData.avatar}
           alt={generalData.name}
           className="w-20 h-20 rounded-full"
         /> */}
-      <hr className="border-t-2 border-slate-300 dark:border-slate-700 p-5 " />
+      <hr className="border-t-2 border-slate-700 p-5 " />
       <section  className="relative m-5">
         <div className="text-center pb-4">
           <h1 className="mb-3 text-4xl text-slate-900 dark:text-slate-100 font-semibold">
