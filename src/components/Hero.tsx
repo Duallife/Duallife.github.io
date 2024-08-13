@@ -15,21 +15,21 @@ const Hero = () => {
         <Spotlight className="left-80 top-28 h-[80vh] w-[50vw]" fill="blue" />
       </div>
 
-      <div className='w-full flex flex-col lg:flex-row justify-between items-stretch -mt-5 '>
+      <div className='w-full flex flex-col lg:flex-row justify-between items-stretch '>
         <div className='flex flex-col lg:w-1/2 p-5'>
           <TextGenerateEffect
-            className='text-4xl lg:text-8xl md:text-8xl sm:text-4xl font-bold text-white text-center lg:text-start'
+            className='text-6xl lg:text-8xl md:text-8xl sm:text-6xl font-bold text-white text-center lg:text-start'
             words='Welcome'
           />
           <TextGenerateEffect
             className='uppercase tracking-widest font-light text-lg ml-3 -mt-8 text-center lg:text-start'
-            words='A personal web by Ricky Tse'
+            words='Personal web from Ricky Tse'
           />
         </div>
         <div className='flex flex-col items-end justify-end lg:w-1/2 p-5'>
           <div className='rounded-lg p-5 mt-3'>
             <motion.p
-              className='text-sm text-end lg:text-end sm:text-center md:text-center text-white font-light'
+              className='text-sm text-center lg:text-end text-white font-light'
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, ease: "easeOut"}} // Adjust the duration as needed

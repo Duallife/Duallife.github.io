@@ -74,7 +74,7 @@ export const navItems = [
       description: "",
       className: "lg:row-span-1 lg:col-span-5 md:col-span-6 md:row-span-1",
       imgClassName: "",
-      titleClassName: "lg:pb-18 md:pb-12 md:mb-12 sm:pb-12 sm:mb-12",
+      titleClassName: "lg:pb-18 md:pb-12 md:mb-12 sm:pb-12 sm:mb-12 pb-12 mb-12",
       img: "",
       website:"https://github.com/Duallife",
       hoverEffect: false,
