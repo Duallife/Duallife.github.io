@@ -51,7 +51,7 @@ export const navItems = [
     {
       id: 5,
       title: "Customized 3D printed Mouse",
-      description: "A cutomized e-sports finger grip mouse with a 3D printed shell",
+      description: "A modified lightweight ergonomic gaming mouse",
       className: "md:col-span-3 md:row-span-3 lg:row-span-2",
       imgClassName: "mb-12 scale-110",
       titleClassName: "",
@@ -60,8 +60,8 @@ export const navItems = [
     },
     {
       id: 6,
-      title: "Automatic music box",
-      description: "An self designed automatic music box and automatic puncher for 30 notes music box",
+      title: "Automatic music box tape puncher",
+      description: "An open-sourced automatic music box puncher simulating 3D printer structure and self-written firmware",
       className: "lg:row-span-2 lg:col-span-2 md:col-span-3 md:row-span-2",
       imgClassName: "",
       titleClassName: "",
