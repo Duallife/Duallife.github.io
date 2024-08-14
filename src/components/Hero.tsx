@@ -18,12 +18,12 @@ const Hero = () => {
       <div className='w-full flex flex-col lg:flex-row justify-between items-stretch '>
         <div className='flex flex-col lg:w-1/2 p-5'>
           <TextGenerateEffect
-            className='text-6xl lg:text-8xl md:text-8xl sm:text-6xl font-bold text-white text-center lg:text-start'
+            className='text-4xl lg:text-8xl md:text-8xl sm:text-4xl font-bold text-white text-center lg:text-start'
             words='Welcome'
           />
           <TextGenerateEffect
-            className='uppercase tracking-widest font-light text-lg ml-3 -mt-8 text-center lg:text-start'
-            words='Personal web from Ricky Tse'
+            className='uppercase tracking-widest font-light text-lg -mt-8 text-center lg:text-start'
+            words="Ricky Tse's personal web"
           />
         </div>
         <div className='flex flex-col items-end justify-end lg:w-1/2 p-5'>
