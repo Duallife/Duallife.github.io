@@ -6,6 +6,7 @@ export const contentData = [
         title: "Columbia University",
         subTitle: "M.S. - Mechanical Engineering",
         date: "Sept 2024 - Now",
+        description: `• MBL Lab`,
       },
       {
         title: "The Hong Kong University of Science and Technology",
@@ -77,6 +78,16 @@ export const contentData = [
       },
     ],
   },
+  // {
+  //   title: "Skills",
+  //   items: [
+  //     {
+  //       description: `• Responsible for the mechanical design and firmware of the robot and outer wall structure.
+  //                     • Utilizing facade climbing robot to install solar panels on facade, reducing risks of working at height.
+  //                     • Engineering Innovation Challenge (Singapore) champion. Hong Kong ASMPT bronze award. HKSTP Inccubation Program.`,
+  //     },
+  //   ],
+  // },
 ];
 
 export type Content = {
