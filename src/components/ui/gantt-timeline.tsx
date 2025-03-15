@@ -90,22 +90,20 @@ const parseEndDate = (dateStr: string): Date => {
 
 // Get color based on item type
 const getItemColor = (type: 'education' | 'work' | 'project', isActive: boolean, itemId: string): string => {
-  if (isActive) return 'bg-[#005ab4]';
-  
   // Special case for HKUST-ISD
   if (itemId === 'hkust-ra') {
-    return 'bg-emerald-600 hover:bg-emerald-500';
+    return isActive ? 'bg-emerald-700 shadow-lg' : 'bg-emerald-600 hover:bg-emerald-500';
   }
   
   switch (type) {
     case 'education':
-      return 'bg-blue-600 hover:bg-blue-500';
+      return isActive ? 'bg-blue-700 shadow-lg' : 'bg-blue-600 hover:bg-blue-500';
     case 'work':
-      return 'bg-emerald-600 hover:bg-emerald-500';
+      return isActive ? 'bg-emerald-700 shadow-lg' : 'bg-emerald-600 hover:bg-emerald-500';
     case 'project':
-      return 'bg-amber-600 hover:bg-amber-500';
+      return isActive ? 'bg-amber-700 shadow-lg' : 'bg-amber-600 hover:bg-amber-500';
     default:
-      return 'bg-gray-600 hover:bg-gray-500';
+      return isActive ? 'bg-gray-700 shadow-lg' : 'bg-gray-600 hover:bg-gray-500';
   }
 };
 
