@@ -17,7 +17,7 @@ const Footer = () => {
             </div> */}
             <div className="flex mt-10 md:flex-row flex-col items-center justify-end w-full">
                 <p className="text-neutral-400 text-end items-end justify-end md:text-base text-sm md:font-normal font-light">
-                    Copyright © 2024 Ricky Tse
+                    Copyright © 2025 Ricky Tse
                 </p>
             </div>
         </footer>

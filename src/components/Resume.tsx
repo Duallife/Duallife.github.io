@@ -1,8 +1,14 @@
+'use client';
+
 import React from 'react'
-import { generalData } from '@/data/general'
+import { generalData, type GeneralData, type Skills } from '@/data/general'
 import { contentData } from '@/data/content'
 import type { Content } from '@/data/content'
 import { FaEnvelope, FaGithub, FaLinkedin, FaDownload } from 'react-icons/fa'
+import { SiBilibili } from 'react-icons/si'
+import { GanttTimeline } from './ui/gantt-timeline'
+import { timelineItems } from '@/data/timeline'
+import { motion } from 'framer-motion'
 
 type ContentProps = Content;
 
@@ -10,6 +16,7 @@ const iconMap: { [key: string]: JSX.Element } = {
   mail: <FaEnvelope />,
   github: <FaGithub />,
   linkedin: <FaLinkedin />,
+  bilibili: <SiBilibili />,
 };
 
 const Content: React.FC<ContentProps> = ({ title, items }) => {
@@ -66,7 +73,25 @@ const Content: React.FC<ContentProps> = ({ title, items }) => {
   );
 };
 
+type SkillSectionProps = {
+  title: keyof Skills;
+  displayTitle: string;
+  skills: string[];
+};
+
+const SkillSection: React.FC<SkillSectionProps> = ({ displayTitle, skills }) => (
+  <div>
+    <h4 className="text-sm mb-2">{displayTitle}</h4>
+    <ul className="list-disc pl-5 text-slate-600 dark:text-gray-400 space-y-1">
+      {skills.map((skill, index) => (
+        <li key={index}>{skill}</li>
+      ))}
+    </ul>
+  </div>
+);
+
 const Resume = () => {
+  const { skills } = generalData;
 
   return (
     <section id="resume" className='pt-7'>
@@ -85,14 +110,37 @@ const Resume = () => {
             {generalData.jobTitle}
           </p>
         </div>
-        <a href="./cv.pdf" download>
-          <button
-            className="absolute right-0 top-0 shadow-[inset_0_0_0_2px_#616467] text-black px-4 py-2 rounded-full text-xs tracking-widest uppercase font-bold bg-transparent hover:bg-[#005ab4] dark:text-white transition duration-200">
-            <span className="hidden sm:inline">Download </span>
-            <span className="sm:hidden"><FaDownload /></span>
-          </button>
-        </a>
+        <div className="absolute right-0 top-0 flex md:flex-row flex-col md:space-x-2 space-y-2 md:space-y-0 items-end">
+          <a href="./cv_en.pdf" download className="flex justify-end">
+            <button
+              className="shadow-[inset_0_0_0_2px_#616467] text-black px-4 py-2 rounded-full text-xs tracking-widest uppercase font-bold bg-transparent hover:bg-[#005ab4] dark:text-white transition duration-200">
+              <span className="hidden sm:inline md:inline">English CV</span>
+              <span className="sm:hidden">EN</span>
+            </button>
+          </a>
+          <a href="./cv_cn.pdf" download className="flex justify-end">
+            <button
+              className="shadow-[inset_0_0_0_2px_#616467] text-black px-4 py-2 rounded-full text-xs tracking-widest uppercase font-bold bg-transparent hover:bg-[#005ab4] dark:text-white transition duration-200">
+              <span className="hidden sm:inline md:inline">中文简历</span>
+              <span className="sm:hidden">中</span>
+            </button>
+          </a>
+        </div>
       </section>
+      
+      {/* Gantt Timeline */}
+      <motion.div 
+        className="mb-8 px-4"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h2 className="text-2xl text-center mb-3 text-slate-100">Career Timeline</h2>
+        <div className="bg-deepPurple border border-white/[0.1] rounded-2xl shadow-md p-4">
+          <GanttTimeline items={timelineItems} />
+        </div>
+      </motion.div>
+      
       {/* <section className="text-sm">
         <div className='bg-white dark:bg-slate-900 rounded-lg shadow-md p-5'>
         <h3 className="mb-1 text-slate-900 dark:text-slate-100">About</h3>
@@ -106,7 +154,20 @@ const Resume = () => {
           return <Content {...content} key={index} />;
         })}
       </div>
-      <section id="contact" className="my-5 text-sm">
+
+      <section className="text-sm mt-5">
+        <div className='bg-deepPurple border border-white/[0.1] rounded-2xl shadow-md p-5 mb-5'>
+          <h3 className="mb-6">Skills</h3>
+          <div className="grid md:grid-cols-3 grid-cols-1 gap-6">
+            <SkillSection title="cad" displayTitle="CAD" skills={skills.cad} />
+            <SkillSection title="dataAnalysis" displayTitle="Data Analysis" skills={skills.dataAnalysis} />
+            <SkillSection title="product" displayTitle="Product" skills={skills.product} />
+            <SkillSection title="programming" displayTitle="Programming" skills={skills.programming} />
+            <SkillSection title="electronic" displayTitle="Electronic" skills={skills.electronic} />
+            <SkillSection title="languages" displayTitle="Languages" skills={skills.languages} />
+          </div>
+        </div>
+
         <div className='bg-deepPurple border border-white/[0.1] rounded-2xl shadow-md p-5'>
           <h3 className="mb-6">Contact</h3>
           <div className="flex flex-col gap-6">

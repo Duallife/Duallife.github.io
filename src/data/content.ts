@@ -29,7 +29,7 @@ export const contentData = [
       {
         title: "Apple Inc",
         subTitle: "iPhone Product design intern",
-        date: "Jul 2022 - Oct 2023",
+        date: "Jul 2023 - Oct 2023",
         description: `• Responsible for investigating assembly issues for mass production (iPhone), and on-site work in the Foxconn factory.
                       • Finish a side project, programmed an app for pre-production inspection for design risks for iPhone.
                       • Participate in fixture & housing design, aim improving overall production quality and yield.
@@ -70,9 +70,9 @@ export const contentData = [
       {
         title: "Ultra Low Cost 6-DOF Robotic Arm",
         date: "Now 2024 - June 2024",
-        description: `• Responsible for the mechanical design and firmware of the robot and outer wall structure.
-                      • Utilizing facade climbing robot to install solar panels on facade, reducing risks of working at height.
-                      • Engineering Innovation Challenge (Singapore) champion. Hong Kong ASMPT bronze award. HKSTP Inccubation Program.`,
+        description: `• Overall design of the 6-Axis robot arm from top to bottom, with three different inhouse 3dprinted cycloid gearbox.
+                      • Full development of algorithm, with front and inverse kinematic and Screen UI for embedded system. Controllable with ROS2.
+                      • Open loop motor design taking reference from 3D printer to reduce cost. High percentage of waterjet to avoid CNC parts.`,
         href: "https://github.com/Duallife/Six_Dof_Arm",
         website: "6Dof Arm Github Repository",
       },

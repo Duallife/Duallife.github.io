@@ -14,7 +14,7 @@ export const BentoGrid = ({
     <div
       className={cn(
         // change gap-4 to gap-8, change grid-cols-3 to grid-cols-5, remove md:auto-rows-[18rem], add responsive code
-        "grid grid-cols-1 md:grid-cols-6 lg:grid-cols-5 md:grid-rows-10 lg:grid-rows-9 gap-4 lg:gap-8 mx-auto",
+        "grid grid-cols-1 sm:grid-rows-12 md:grid-cols-6 md:grid-rows-12 lg:grid-cols-5 lg:grid-rows-11 gap-4 lg:gap-8 mx-auto",
         className
       )}
     >
@@ -71,7 +71,7 @@ export const BentoGridItem = ({
               ${hoverEffect ? 'group-hover/bento:translate-x-2' : ''
               }`}
           >
-            {id === 7 ? (
+            {id === 9 ? (
               <>
                 <div className={cn(titleClassName, `text-lg md:text-2xl lg:text-3xl font-bold`)}>
                   {title}
