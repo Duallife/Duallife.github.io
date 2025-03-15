@@ -3,7 +3,12 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./provider";
 
-const montserrat = Montserrat({ subsets: ["latin"] });
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-montserrat',
+});
 
 export const metadata: Metadata = {
   title: "Ricky Tse's Web",
@@ -16,11 +21,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${montserrat.variable} dark`}>
       <head>
         <link rel="icon" href="/person.ico" />
       </head>
-      <body className={montserrat.className}>
+      <body className={`${montserrat.className} bg-background text-white antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -28,7 +33,8 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
-        </ThemeProvider></body>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

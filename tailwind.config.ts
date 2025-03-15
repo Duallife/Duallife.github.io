@@ -7,7 +7,7 @@ const {
   default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");
 
-const config = {
+const config: Config = {
   darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
@@ -30,6 +30,9 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['var(--font-montserrat)'],
+      },
       colors: {
         black: {
           DEFAULT: "#000",
@@ -46,11 +49,11 @@ const config = {
           "100": "#E4ECFF",
         },
         purple: "#CBACF9",
-        deepPurple: "#04071d",
+        deepPurple: "#0F1629",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
+        background: "#030711",
         foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",

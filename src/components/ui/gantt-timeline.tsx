@@ -90,8 +90,6 @@ const parseEndDate = (dateStr: string): Date => {
 
 // Get color based on item type
 const getItemColor = (type: 'education' | 'work' | 'project', isActive: boolean, itemId: string): string => {
-  if (isActive) return 'bg-[#005ab4]';
-  
   // Special case for HKUST-ISD
   if (itemId === 'hkust-ra') {
     return 'bg-emerald-600 hover:bg-emerald-500';
@@ -269,14 +267,14 @@ export const GanttTimeline: React.FC<GanttTimelineProps> = ({ items }) => {
               return (
                 <div 
                   key={year}
-                  className="absolute h-full border-l border-slate-800/20"
+                  className="absolute h-full border-l border-slate-600/30"
                   style={{ left: `${position}%` }}
                 ></div>
               );
             })}
             {/* Add an extra grid line for the end of 2025 */}
             <div 
-              className="absolute h-full border-l border-slate-800/20"
+              className="absolute h-full border-l border-slate-600/30"
               style={{ left: '100%' }}
             ></div>
           </div>
@@ -312,7 +310,7 @@ export const GanttTimeline: React.FC<GanttTimelineProps> = ({ items }) => {
                       key={item.id}
                       className={`absolute h-10 rounded-md flex items-center px-3 cursor-pointer transition-all ${
                         getItemColor(item.type, isActive, item.id)
-                      } ${isActive ? 'z-10 shadow-lg' : ''}`}
+                      } ${isActive ? 'z-10 ring-2 ring-white/20' : ''}`}
                       style={{ 
                         left: `${startPosition}%`, 
                         width: `${width}%`,
