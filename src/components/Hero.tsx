@@ -21,11 +21,11 @@ const Hero = () => {
         <div className='flex flex-col lg:w-1/2 p-5'>
           <TextGenerateEffect
             className='text-4xl lg:text-8xl md:text-8xl sm:text-4xl font-bold text-white text-center lg:text-start'
-            words='Welcome'
+            words='Ricky Tse'
           />
           <TextGenerateEffect
             className='uppercase tracking-widest font-light text-lg -mt-8 text-center lg:text-start'
-            words="Ricky Tse's personal web"
+            words="Welcome to my personal website"
           />
           
           <motion.div 

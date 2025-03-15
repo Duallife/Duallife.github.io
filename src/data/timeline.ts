@@ -63,7 +63,23 @@ export const timelineItems: TimelineItem[] = [
     title: 'Columbia University',
     organization: 'M.S. - Mechanical Engineering',
     date: 'Sept 2024 - Now',
-    description: '• MBL Lab',
+    description: '• Concentration in Robotics and Control',
     type: 'education'
+  },
+  {
+    id: 'rs',
+    title: 'Robotics Studio',
+    organization: 'Columbia University',
+    date: 'Sept 2024 - Dec 2024',
+    description: '• Four-legged robot design, with ROS2, MuJoCo RL, and control algorithm',
+    type: 'project'
+  },
+  {
+    id: 'mbl',
+    title: 'MBL Lab',
+    organization: 'Columbia University - Musculoskeletal Biomechanics Lab',
+    date: 'Oct 2024 - Now',
+    description: '• Research assistant for friction tester on human joints',
+    type: 'work'
   }
 ]; 

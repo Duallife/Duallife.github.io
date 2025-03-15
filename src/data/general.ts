@@ -30,7 +30,10 @@ export const generalData: GeneralData = {
     jobTitle: "Mechanical Engineer",
     website: "https://duallife.github.io/",
     about:
-        `Hi, I'm Ricky Tse, a Mechanical Engineer from Hong Kong pursuing graduate studies at Columbia University. My expertise includes CAD, FEA, PCB design, and robot control algorithms. I've interned at Apple for iPhone Product Design and worked as a design engineer at Pointfit Tech Ltd. With a passion for innovation, I've been recognized in various engineering challenges. Let's connect!`,
+        `Hi, I'm Ricky, a Mechanical Engineer from Hong Kong pursuing graduate studies at Columbia University. 
+        My expertise includes CAD, FEA, PCB design, and robot control algorithms. 
+        I've have my internship at Apple for iPhone Product Design and worked as a design engineer at Pointfit Tech Ltd. With a passion for innovation, 
+        I've been recognized in various engineering challenges. Let's connect!`,
     skills: {
         cad: [
             "Solidworks",
