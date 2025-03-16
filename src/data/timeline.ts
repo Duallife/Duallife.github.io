@@ -22,7 +22,7 @@ export const timelineItems: TimelineItem[] = [
     id: 'pointfit',
     title: 'Pointfit Tech Ltd',
     organization: 'Product design engineer',
-    date: 'Jun 2022 - Now',
+    date: 'Jun 2022 - Jun 2025',
     description: '• Responsible for designing & prototyping a portable biomarker detection device, material selection & testing. UX design.\n• Device prototyping, BOM creation, device testing, Prototype showcasing, and conducting testing with HK PolyU.\n• Engaged in presentations to clients(ASICS, Nike, Adidas, HK Government, HK PolyU, etc).\n• Crowned as Grand Winner Prize of ASICS accelerator 3.0 with the newly designed product.',
     type: 'work'
   },
@@ -43,42 +43,18 @@ export const timelineItems: TimelineItem[] = [
     type: 'education'
   },
   {
-    id: 'firs',
-    title: 'F.I.R.S',
-    organization: 'Facade Installation Robotic System',
-    date: 'Sept 2023 - May 2024',
-    description: '• Responsible for the mechanical design and firmware of the robot and outer wall structure.\n• Utilizing facade climbing robot to install solar panels on facade, reducing risks of working at height.\n• Engineering Innovation Challenge (Singapore) champion. Hong Kong ASMPT bronze award. HKSTP Inccubation Program.',
-    type: 'project'
-  },
-  {
-    id: 'robot-arm',
-    title: 'Ultra Low Cost 6-DOF Robotic Arm',
-    organization: 'Open Source Project',
-    date: 'Nov 2023 - Jun 2024',
-    description: '• Overall design of the 6-Axis robot arm from top to bottom, with three different inhouse 3dprinted cycloid gearbox.\n• Full development of algorithm, with front and inverse kinematic and Screen UI for embedded system. Controllable with ROS2.\n• Open loop motor design taking reference from 3D printer to reduce cost. High percentage of waterjet to avoid CNC parts.',
-    type: 'project'
-  },
-  {
     id: 'columbia',
     title: 'Columbia University',
     organization: 'M.S. - Mechanical Engineering',
-    date: 'Sept 2024 - Now',
+    date: 'Sept 2024 - Jun 2025',
     description: '• Concentration in Robotics and Control',
     type: 'education'
-  },
-  {
-    id: 'rs',
-    title: 'Robotics Studio',
-    organization: 'Columbia University',
-    date: 'Sept 2024 - Dec 2024',
-    description: '• Four-legged robot design, with ROS2, MuJoCo RL, and control algorithm',
-    type: 'project'
   },
   {
     id: 'mbl',
     title: 'MBL Lab',
     organization: 'Columbia University - Musculoskeletal Biomechanics Lab',
-    date: 'Oct 2024 - Now',
+    date: 'Oct 2024 - Jun 2025',
     description: '• Research assistant for friction tester on human joints',
     type: 'work'
   }

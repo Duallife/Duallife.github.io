@@ -52,7 +52,7 @@ const parseEndDate = (dateStr: string): Date => {
   try {
     // Check if date contains "Now"
     if (dateStr.includes('Now')) {
-      return new Date(); // Return current date
+      return new Date(); // Return current date for "Now"
     }
     
     const parts = dateStr.split(' - ');
@@ -235,20 +235,19 @@ export const GanttTimeline: React.FC<GanttTimelineProps> = ({ items }) => {
   }, [educationItems, workItems, projectItems]);
   
   return (
-    <div className="w-full py-4 overflow-x-auto">
-      <div className="min-width-content" style={{ minWidth: '800px' }}>
+    <div className="w-full py-4">
+      <div className="w-full relative">
         {/* Year markers */}
         <div className="relative h-8 mb-2">
           {yearMarkers.map((year, index) => {
-            // Calculate position with fixed spacing
-            const position = (index * 20); // Each year takes 20% of the width
+            const position = index * 16.67; // Each year takes equal width (100/6)
             return (
               <div 
                 key={year}
                 className="absolute h-full flex items-center justify-center text-xs text-slate-300"
                 style={{ 
                   left: `${position}%`, 
-                  width: '20%',
+                  width: '16.67%',
                   textAlign: 'center'
                 }}
               >
@@ -263,18 +262,17 @@ export const GanttTimeline: React.FC<GanttTimelineProps> = ({ items }) => {
           {/* Timeline grid */}
           <div className="absolute inset-0">
             {yearMarkers.map((year, index) => {
-              const position = (index * 20); // Each year takes 20% of the width
+              const position = index * 16.67;
               return (
                 <div 
                   key={year}
-                  className="absolute h-full border-l border-slate-600/30"
+                  className="absolute h-full border-l border-white/20"
                   style={{ left: `${position}%` }}
                 ></div>
               );
             })}
-            {/* Add an extra grid line for the end of 2025 */}
             <div 
-              className="absolute h-full border-l border-slate-600/30"
+              className="absolute h-full border-l border-white/20"
               style={{ left: '100%' }}
             ></div>
           </div>
@@ -287,7 +285,6 @@ export const GanttTimeline: React.FC<GanttTimelineProps> = ({ items }) => {
                   const startDate = parseDate(item.date);
                   const endDate = parseEndDate(item.date);
                   
-                  // Calculate position based on years and months since 2020
                   const startYear = startDate.getFullYear();
                   const startMonth = startDate.getMonth();
                   const yearsSince2020 = startYear - 2020;
@@ -297,11 +294,10 @@ export const GanttTimeline: React.FC<GanttTimelineProps> = ({ items }) => {
                   const endMonth = endDate.getMonth();
                   const monthsUntilEnd = (endYear - 2020) * 12 + endMonth;
                   
-                  // Each year is 20% of the width, each month is 20/12 = 1.667% of the width
-                  const startPosition = (monthsSince2020Start / 60) * 100; // 60 months in 5 years
-                  const endPosition = (monthsUntilEnd / 60) * 100;
-                  
-                  const width = Math.max(endPosition - startPosition, 3); // Minimum width for visibility
+                  // Calculate position based on 72 months (6 full years)
+                  const startPosition = (monthsSince2020Start / 72) * 100;
+                  const endPosition = (monthsUntilEnd / 72) * 100;
+                  const width = Math.min(endPosition - startPosition, 100 - Math.min(startPosition, 95));
                   
                   const isActive = activeItem === item.id;
                   
@@ -312,18 +308,15 @@ export const GanttTimeline: React.FC<GanttTimelineProps> = ({ items }) => {
                         getItemColor(item.type, isActive, item.id)
                       } ${isActive ? 'z-10 ring-2 ring-white/20' : ''}`}
                       style={{ 
-                        left: `${startPosition}%`, 
-                        width: `${width}%`,
-                        minWidth: '100px',
-                        maxWidth: '95%' // Prevent overflow
+                        left: `${Math.min(startPosition, 95)}%`,
+                        width: `${Math.min(width, 100 - Math.min(startPosition, 95))}%`,
+                        minWidth: '80px',
+                        maxWidth: `${100 - Math.min(startPosition, 95)}%`
                       }}
                       onClick={() => setActiveItem(isActive ? null : item.id)}
                       whileHover={{ y: -2 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <div className={`w-6 h-6 rounded-full flex items-center justify-center mr-2 bg-white/20`}>
-                        {getItemIcon(item.type, 12, item.id)}
-                      </div>
                       <div className="flex-1 truncate">
                         <p className="text-xs font-medium text-white truncate">{item.title}</p>
                         <p className="text-xs text-slate-200 truncate">{item.organization}</p>
@@ -389,14 +382,8 @@ export const GanttTimeline: React.FC<GanttTimelineProps> = ({ items }) => {
             <span className="text-slate-300">Work</span>
           </div>
           <div className="flex items-center">
-            <div className="w-4 h-4 rounded-full bg-amber-600 mr-2 flex items-center justify-center">
-              <FaLaptopCode size={10} className="text-white" />
-            </div>
-            <span className="text-slate-300">Project</span>
-          </div>
-          <div className="flex items-center">
             <FaInfoCircle size={14} className="text-slate-400 mr-2" />
-            <span className="text-slate-300">Click on a bar for details</span>
+            <span className="text-slate-300">Click for details</span>
           </div>
         </div>
       </div>
