@@ -81,8 +81,8 @@ export const navItems = [
     {
       id: 8,
       title: "Four-Legged Robot",
-      description: "Columbia University - 2024Fall Robotics Studio",
-      className: "md:col-span-3 md:row-span-3 lg:row-span-2",
+      description: "Columbia University - 2024 Fall Robotics Studio",
+      className: "md:col-span-3 md:row-span-2 lg:row-span-2",
       imgClassName: "",
       titleClassName: "",
       img: "./ROBOT.png",
@@ -90,6 +90,17 @@ export const navItems = [
     },
     {
       id: 9,
+      title: "CALMPOD",
+      description: "Columbia University - 2024 Spring HCDI",
+      className: "lg:row-span-2 lg:col-span-5 md:col-span-6 md:row-span-2",
+      imgClassName: "",
+      titleClassName: "lg:pb-18 md:pb-12 md:mb-12 sm:pb-12 sm:mb-12 pb-12 mb-12",
+      img: "./CALMPOD.png",
+      website:"https://www.youtube.com/watch?v=AYq1h6CNV44",
+      hoverEffect: false,
+    },
+    {
+      id: 10,
       title: "There is still more...",
       description: "",
       className: "lg:row-span-1 lg:col-span-5 md:col-span-6 md:row-span-1",

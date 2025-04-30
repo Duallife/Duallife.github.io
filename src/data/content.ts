@@ -6,20 +6,21 @@ export const contentData = [
         title: "Columbia University",
         subTitle: "M.S. - Mechanical Engineering",
         date: "Sept 2024 - Now",
-        description: `• MBL Lab`,
+        description: `• Musculoskeletal Biomechanics Lab - Research assistant for friction tester on human joints
+                      • Courseworks: Robotics, Control, Kinematics, Human centered design`,
       },
       {
         title: "The Hong Kong University of Science and Technology",
         subTitle: "BSc - Integrative System and Design",
         date: "Sept 2020 - Jun 2024",
-        description: `• Scholarships: Chinachem Promovership Scholarships, ROA scholarship.
+        description: `• Scholarships: Chinachem Promovership Scholarships, ROA scholarship
                       • Courseworks: CAD, FEA, Static and Dynamic, Mechatronic, Product design, Programming, Mechanical system, Fluid Mechanics`,
       },
       {
         title: "Affiliate Mechanical Engineering",
         subTitle: "University College London",
         date: "Sept 2022 - Jun 2023",
-        description: `•  Materials, Mechatronic control system, Robotics, Hydrodynamics, Biomechanics.`,
+        description: `• Courseworks: Materials, Mechatronic control system, Robotics, Hydrodynamics, Biomechanics.`,
       },
     ],
   },
