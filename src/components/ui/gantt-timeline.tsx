@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { FaGraduationCap, FaBriefcase, FaLaptopCode, FaInfoCircle } from 'react-icons/fa';
+import { usePathname } from 'next/navigation';
 
 // Define the TimelineItem interface directly here
 export interface TimelineItem {
@@ -18,74 +19,47 @@ interface GanttTimelineProps {
   items: TimelineItem[];
 }
 
-// Parse date string to get start date as Date object
+// Parse date string to Date object
 const parseDate = (dateStr: string): Date => {
-  try {
-    // Extract start date part (before the dash)
-    const startDateStr = dateStr.split(' - ')[0].trim();
-    
-    // Map month abbreviations to month numbers
-    const monthMap: Record<string, number> = {
-      'Jan': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3, 'May': 4, 'Jun': 5,
-      'Jul': 6, 'Aug': 7, 'Sep': 8, 'Sept': 8, 'Oct': 9, 'Nov': 10, 'Dec': 11
-    };
-    
-    // Extract month and year
-    const parts = startDateStr.split(' ');
-    if (parts.length < 2) return new Date(); // Fallback
-    
-    const month = parts[0];
-    const year = parseInt(parts[1]);
-    
-    if (isNaN(year)) return new Date(); // Fallback if year is not a number
-    
-    // Create date at the exact start of the month
-    return new Date(year, monthMap[month] || 0, 1);
-  } catch (error) {
-    console.error("Error parsing date:", dateStr, error);
-    return new Date(); // Fallback to current date on error
+  const parts = dateStr.split(' - ');
+  const startDate = parts[0];
+  
+  // Handle different date formats
+  if (startDate.includes('Sept') || startDate.includes('9月')) {
+    return new Date(parseInt(startDate.split(' ')[1] || startDate.split('年')[0]), 8, 1); // September is month 8 (0-indexed)
+  } else if (startDate.includes('Jun') || startDate.includes('6月')) {
+    return new Date(parseInt(startDate.split(' ')[1] || startDate.split('年')[0]), 5, 1); // June is month 5 (0-indexed)
+  } else if (startDate.includes('Jul') || startDate.includes('7月')) {
+    return new Date(parseInt(startDate.split(' ')[1] || startDate.split('年')[0]), 6, 1); // July is month 6 (0-indexed)
+  } else if (startDate.includes('Oct') || startDate.includes('10月')) {
+    return new Date(parseInt(startDate.split(' ')[1] || startDate.split('年')[0]), 9, 1); // October is month 9 (0-indexed)
+  } else if (startDate.includes('Now') || startDate.includes('现在')) {
+    return new Date(); // Current date
+  } else if (startDate.includes('Dec') || startDate.includes('12月')) {
+    return new Date(parseInt(startDate.split(' ')[1] || startDate.split('年')[0]), 11, 1); // December is month 11 (0-indexed)
   }
+  
+  // Default fallback
+  return new Date(2020, 0, 1);
 };
 
 // Parse end date from date string
 const parseEndDate = (dateStr: string): Date => {
-  try {
-    // Check if date contains "Now"
-    if (dateStr.includes('Now')) {
-      return new Date(); // Return current date for "Now"
-    }
-    
-    const parts = dateStr.split(' - ');
-    if (parts.length < 2) {
-      // If no end date specified, use start date plus one month
-      const startDate = parseDate(dateStr);
-      return new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0); // Last day of the month
-    }
-    
-    const endDateStr = parts[1].trim();
-    
-    // Map month abbreviations to month numbers
-    const monthMap: Record<string, number> = {
-      'Jan': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3, 'May': 4, 'Jun': 5,
-      'Jul': 6, 'Aug': 7, 'Sep': 8, 'Sept': 8, 'Oct': 9, 'Nov': 10, 'Dec': 11
-    };
-    
-    // Extract month and year
-    const endParts = endDateStr.split(' ');
-    if (endParts.length < 2) return new Date(); // Fallback
-    
-    const month = endParts[0];
-    const year = parseInt(endParts[1]);
-    
-    if (isNaN(year)) return new Date(); // Fallback if year is not a number
-    
-    // Set to last day of the month
-    const endDate = new Date(year, monthMap[month] || 0, 1);
-    return new Date(endDate.getFullYear(), endDate.getMonth() + 1, 0);
-  } catch (error) {
-    console.error("Error parsing end date:", dateStr, error);
-    return new Date(); // Fallback to current date on error
+  const parts = dateStr.split(' - ');
+  const endDate = parts[1] || parts[0];
+  
+  if (endDate.includes('Now') || endDate.includes('现在')) {
+    return new Date();
+  } else if (endDate.includes('Jun') || endDate.includes('6月')) {
+    return new Date(parseInt(endDate.split(' ')[1] || endDate.split('年')[0]), 5, 1);
+  } else if (endDate.includes('Oct') || endDate.includes('10月')) {
+    return new Date(parseInt(endDate.split(' ')[1] || endDate.split('年')[0]), 9, 1);
+  } else if (endDate.includes('Dec') || endDate.includes('12月')) {
+    return new Date(parseInt(endDate.split(' ')[1] || endDate.split('年')[0]), 11, 1);
   }
+  
+  // Default fallback
+  return new Date(2025, 11, 31);
 };
 
 // Get color based on item type
@@ -128,6 +102,8 @@ const getItemIcon = (type: 'education' | 'work' | 'project', size: number = 12, 
 
 export const GanttTimeline: React.FC<GanttTimelineProps> = ({ items }) => {
   const [activeItem, setActiveItem] = useState<string | null>(null);
+  const pathname = usePathname();
+  const isChinesePage = pathname === '/cn';
   
   // Convert 'work' type to 'project' for specific items
   const processedItems = useMemo(() => {
@@ -170,163 +146,116 @@ export const GanttTimeline: React.FC<GanttTimelineProps> = ({ items }) => {
   for (let year = 2020; year <= 2025; year++) {
     yearMarkers.push(year);
   }
-
-  // Group items by type, with special handling for HKUST-ISD
-  const { educationItems, workItems, projectItems } = useMemo(() => {
-    const education = sortedItems.filter(item => item.type === 'education');
-    // Move HKUST-ISD to work items regardless of its type
-    const work = sortedItems.filter(item => item.type === 'work' || item.id === 'hkust-ra');
-    const project = sortedItems.filter(item => item.type === 'project');
-    return { educationItems: education, workItems: work, projectItems: project };
-  }, [sortedItems]);
-
-  // Organize items into rows by type, keeping each type in separate rows
-  const organizedRows = useMemo(() => {
-    const rows: TimelineItem[][] = [];
+  
+  // Calculate total timeline duration in months
+  const totalMonths = (paddedLatestDate.getFullYear() - paddedEarliestDate.getFullYear()) * 12 + 
+                     (paddedLatestDate.getMonth() - paddedEarliestDate.getMonth());
+  
+  // Organize items into rows to avoid overlap
+  const organizedRows: TimelineItem[][] = [];
+  const usedPositions: { [key: string]: boolean } = {};
+  
+  sortedItems.forEach(item => {
+    const startDate = parseDate(item.date);
+    const endDate = parseEndDate(item.date);
     
-    // Helper function to check if an item overlaps with any item in a row
-    const overlapsWithRow = (item: TimelineItem, row: TimelineItem[]): boolean => {
-      const itemStart = parseDate(item.date).getTime();
-      const itemEnd = parseEndDate(item.date).getTime();
-      
-      return row.some(rowItem => {
-        const rowItemStart = parseDate(rowItem.date).getTime();
-        const rowItemEnd = parseEndDate(rowItem.date).getTime();
+    // Calculate position and width
+    const startPosition = ((startDate.getTime() - paddedEarliestDate.getTime()) / 
+                          (paddedLatestDate.getTime() - paddedEarliestDate.getTime())) * 100;
+    const endPosition = ((endDate.getTime() - paddedEarliestDate.getTime()) / 
+                        (paddedLatestDate.getTime() - paddedEarliestDate.getTime())) * 100;
+    const width = endPosition - startPosition;
+    
+    // Find a row where this item doesn't overlap
+    let rowIndex = 0;
+    let foundRow = false;
+    
+    while (!foundRow) {
+      if (!organizedRows[rowIndex]) {
+        organizedRows[rowIndex] = [];
+        foundRow = true;
+      } else {
+        // Check if this item overlaps with any existing item in this row
+        const hasOverlap = organizedRows[rowIndex].some(existingItem => {
+          const existingStart = parseDate(existingItem.date);
+          const existingEnd = parseEndDate(existingItem.date);
+          const existingStartPos = ((existingStart.getTime() - paddedEarliestDate.getTime()) / 
+                                   (paddedLatestDate.getTime() - paddedEarliestDate.getTime())) * 100;
+          const existingEndPos = ((existingEnd.getTime() - paddedEarliestDate.getTime()) / 
+                                 (paddedLatestDate.getTime() - paddedEarliestDate.getTime())) * 100;
+          
+          return !(endPosition <= existingStartPos || startPosition >= existingEndPos);
+        });
         
-        // Check for overlap
-        return (itemStart <= rowItemEnd && itemEnd >= rowItemStart);
-      });
-    };
-    
-    // Place items of a specific type in rows
-    const placeItemsByType = (items: TimelineItem[]) => {
-      if (items.length === 0) return;
-      
-      // Start a new section of rows for this type
-      const typeRows: TimelineItem[][] = [];
-      
-      items.forEach(item => {
-        // Find a row where this item doesn't overlap with existing items
-        let placed = false;
-        for (let i = 0; i < typeRows.length; i++) {
-          if (!overlapsWithRow(item, typeRows[i])) {
-            typeRows[i].push(item);
-            placed = true;
-            break;
-          }
+        if (!hasOverlap) {
+          foundRow = true;
+        } else {
+          rowIndex++;
         }
-        
-        // If not placed in any existing row, create a new row
-        if (!placed) {
-          typeRows.push([item]);
-        }
-      });
-      
-      // Add all rows for this type to the main rows array
-      rows.push(...typeRows);
-    };
+      }
+    }
     
-    // Place items in order by type, with each type in its own section
-    placeItemsByType(educationItems);
-    placeItemsByType(workItems);
-    placeItemsByType(projectItems);
-    
-    return rows;
-  }, [educationItems, workItems, projectItems]);
+    organizedRows[rowIndex].push(item);
+  });
   
   return (
-    <div className="w-full py-4">
-      <div className="w-full relative">
+    <div className="w-full">
+      <div className="relative">
         {/* Year markers */}
-        <div className="relative h-8 mb-2">
-          {yearMarkers.map((year, index) => {
-            const position = index * 16.67; // Each year takes equal width (100/6)
-            return (
-              <div 
-                key={year}
-                className="absolute h-full flex items-center justify-center text-xs text-slate-300"
-                style={{ 
-                  left: `${position}%`, 
-                  width: '16.67%',
-                  textAlign: 'center'
-                }}
-              >
-                <span className="font-medium">{year}</span>
-              </div>
-            );
-          })}
+        <div className="flex justify-between mb-4 text-xs text-slate-400">
+          {yearMarkers.map(year => (
+            <div key={year} className="text-center">
+              <div className="w-px h-2 bg-slate-600 mx-auto mb-1"></div>
+              {year}
+            </div>
+          ))}
         </div>
         
-        {/* Gantt chart */}
+        {/* Timeline items */}
         <div className="relative">
-          {/* Timeline grid */}
-          <div className="absolute inset-0">
-            {yearMarkers.map((year, index) => {
-              const position = index * 16.67;
-              return (
-                <div 
-                  key={year}
-                  className="absolute h-full border-l border-white/20"
-                  style={{ left: `${position}%` }}
-                ></div>
-              );
-            })}
-            <div 
-              className="absolute h-full border-l border-white/20"
-              style={{ left: '100%' }}
-            ></div>
-          </div>
-          
-          {/* Timeline items organized in rows */}
-          <div className="relative pb-4">
-            {organizedRows.map((row, rowIndex) => (
-              <div key={rowIndex} className="relative h-12 mb-3">
-                {row.map((item) => {
-                  const startDate = parseDate(item.date);
-                  const endDate = parseEndDate(item.date);
-                  
-                  const startYear = startDate.getFullYear();
-                  const startMonth = startDate.getMonth();
-                  const yearsSince2020 = startYear - 2020;
-                  const monthsSince2020Start = yearsSince2020 * 12 + startMonth;
-                  
-                  const endYear = endDate.getFullYear();
-                  const endMonth = endDate.getMonth();
-                  const monthsUntilEnd = (endYear - 2020) * 12 + endMonth;
-                  
-                  // Calculate position based on 72 months (6 full years)
-                  const startPosition = (monthsSince2020Start / 72) * 100;
-                  const endPosition = (monthsUntilEnd / 72) * 100;
-                  const width = Math.min(endPosition - startPosition, 100 - Math.min(startPosition, 95));
-                  
-                  const isActive = activeItem === item.id;
-                  
-                  return (
-                    <motion.div 
-                      key={item.id}
-                      className={`absolute h-10 rounded-md flex items-center px-3 cursor-pointer transition-all ${
-                        getItemColor(item.type, isActive, item.id)
-                      } ${isActive ? 'z-10 ring-2 ring-white/20' : ''}`}
-                      style={{ 
-                        left: `${Math.min(startPosition, 95)}%`,
-                        width: `${Math.min(width, 100 - Math.min(startPosition, 95))}%`,
-                        minWidth: '80px',
-                        maxWidth: `${100 - Math.min(startPosition, 95)}%`
-                      }}
-                      onClick={() => setActiveItem(isActive ? null : item.id)}
-                      whileHover={{ y: -2 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <div className="flex-1 truncate">
-                        <p className="text-xs font-medium text-white truncate">{item.title}</p>
-                        <p className="text-xs text-slate-200 truncate">{item.organization}</p>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            ))}
-          </div>
+          {organizedRows.map((row, rowIndex) => (
+            <div key={rowIndex} className="relative h-12 mb-3">
+              {/* Row line */}
+              <div className="absolute top-5 left-0 right-0 h-px bg-slate-700"></div>
+              
+              {row.map((item) => {
+                const startDate = parseDate(item.date);
+                const endDate = parseEndDate(item.date);
+                
+                // Calculate position and width
+                const startPosition = ((startDate.getTime() - paddedEarliestDate.getTime()) / 
+                                      (paddedLatestDate.getTime() - paddedEarliestDate.getTime())) * 100;
+                const endPosition = ((endDate.getTime() - paddedEarliestDate.getTime()) / 
+                                    (paddedLatestDate.getTime() - paddedEarliestDate.getTime())) * 100;
+                const width = endPosition - startPosition;
+                
+                const isActive = activeItem === item.id;
+                
+                return (
+                  <motion.div 
+                    key={item.id}
+                    className={`absolute h-10 rounded-md flex items-center px-3 cursor-pointer transition-all ${
+                      getItemColor(item.type, isActive, item.id)
+                    } ${isActive ? 'z-10 ring-2 ring-white/20' : ''}`}
+                    style={{ 
+                      left: `${Math.min(startPosition, 95)}%`,
+                      width: `${Math.min(width, 100 - Math.min(startPosition, 95))}%`,
+                      minWidth: '80px',
+                      maxWidth: `${100 - Math.min(startPosition, 95)}%`
+                    }}
+                    onClick={() => setActiveItem(isActive ? null : item.id)}
+                    whileHover={{ y: -2 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <div className="flex-1 truncate">
+                      <p className="text-xs font-medium text-white truncate">{item.title}</p>
+                      <p className="text-xs text-slate-200 truncate">{item.organization}</p>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          ))}
         </div>
         
         {/* Active item detail view */}
@@ -373,17 +302,17 @@ export const GanttTimeline: React.FC<GanttTimelineProps> = ({ items }) => {
             <div className="w-4 h-4 rounded-full bg-blue-600 mr-2 flex items-center justify-center">
               <FaGraduationCap size={10} className="text-white" />
             </div>
-            <span className="text-slate-300">Education</span>
+            <span className="text-slate-300">{isChinesePage ? '教育' : 'Education'}</span>
           </div>
           <div className="flex items-center">
             <div className="w-4 h-4 rounded-full bg-emerald-600 mr-2 flex items-center justify-center">
               <FaBriefcase size={10} className="text-white" />
             </div>
-            <span className="text-slate-300">Work</span>
+            <span className="text-slate-300">{isChinesePage ? '经验' : 'Work'}</span>
           </div>
           <div className="flex items-center">
             <FaInfoCircle size={14} className="text-slate-400 mr-2" />
-            <span className="text-slate-300">Click for details</span>
+            <span className="text-slate-300">{isChinesePage ? '点击查看详情' : 'Click for details'}</span>
           </div>
         </div>
       </div>

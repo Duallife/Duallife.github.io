@@ -8,6 +8,7 @@ import {
 } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export const FloatingNav = ({
   navItems,
@@ -53,6 +54,7 @@ export const FloatingNav = ({
             <span className="hidden sm:block text-md relative">{navItem.name}</span>
           </Link>
         ))}
+        <LanguageSwitcher />
       </motion.div>
     </AnimatePresence>
   );

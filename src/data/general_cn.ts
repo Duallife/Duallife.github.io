@@ -24,15 +24,14 @@ export type GeneralData = {
     contacts: Contact[];
 };
 
-export const generalData: GeneralData = {
-    name: "Ricky Tse",
+export const generalDataCN: GeneralData = {
+    name: "谢睿楷",
     avatar: "./vercel.svg",
-    jobTitle: "Mechanical Engineer",
+    jobTitle: "机械工程师",
     website: "https://duallife.github.io/",
     about:
-        `Hi, I'm Ricky, a Mechanical Engineer from Hong Kong. I'm currently work as a mechanical engineer in insta360. 
-        I've graduated from Columbia University with a Master's degree in Mechanical Engineering. 
-        My expertise includes CAD, mechanical design, FEA. I'm also proficient in electronics, PCB design, control algorithms and robotics. `,
+        `你好，我是谢睿楷，来自香港的机械工程师，于哥伦比亚大学研究生毕业，现正就职于影石insta360担任结构工程师一职。
+        我的专长包括CAD、结构设计、有限元分析，同时我也了解电路，PCB设计和以及控制算法和机器人学。`,
     skills: {
         cad: [
             "Solidworks",
@@ -44,7 +43,7 @@ export const generalData: GeneralData = {
         dataAnalysis: [
             "MATLAB",
             "Simulink",
-            "Ansys - Static & Modal Analysis",
+            "Ansys - 静态和模态分析",
         ],
         product: [
             "Blender",
@@ -53,22 +52,22 @@ export const generalData: GeneralData = {
         programming: [
             "Python C++ Javascript",
             "ROS2",
-            "Computer vision and Path finding"
+            "计算机视觉和路径规划"
         ],
         electronic: [
-            "PCB Design (Altium, KiCad)",
-            "Embedded System progamming (STM32, ESP32)",
-            "Power system design"
+            "PCB设计 (Altium, KiCad)",
+            "嵌入式系统编程 (STM32, ESP32)",
+            "电源系统设计"
         ],
         languages: [
-            "English (Professional)",
-            "Mandarin (Native)",
-            "Cantonese (Native)",
+            "英语 (专业)",
+            "普通话 (母语)",
+            "粤语 (母语)",
         ]
     },
     contacts: [
         {
-            label: "Email",
+            label: "邮箱",
             value: "ricky.t2738@gmail.com",
             href: "mailto:ricky.t2738@gmail.com",
             icon: "mail",
@@ -81,15 +80,15 @@ export const generalData: GeneralData = {
         },
         {
             label: "Linkedin",
-            value: "Yui Kai (Ricky) Tse",
+            value: "谢睿楷 (Ricky) Tse",
             href: "https://www.linkedin.com/in/yui-kai-tse-499029231/",
             icon: "linkedin",
         },
         {
-            label: "Bilibili",
+            label: "哔哩哔哩",
             value: "三柒加一",
             href: "https://space.bilibili.com/8533793",
             icon: "bilibili",
         },
     ],
-};
+}; 
