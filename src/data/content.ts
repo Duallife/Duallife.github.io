@@ -28,14 +28,9 @@ export const contentData = [
     title: "Work Experience",
     items: [
       {
-        title: "Apple Inc",
-        subTitle: "iPhone Product design intern",
-        date: "Jul 2023 - Oct 2023",
-        description: `• Responsible for investigating assembly issues for mass production (iPhone), and on-site work in the Foxconn factory.
-                      • Finish a side project, programmed an app for pre-production inspection for design risks for iPhone.
-                      • Participate in fixture & housing design, aim improving overall production quality and yield.
-                      • Responsible for mass production assembly adjustment of a part, FR rate drop from >7% to <2%.
-                      • Inspect design & assembly issues using various inspection methods (CT, X-ray, force test, etc).`,
+        title: "Insta 360",
+        subTitle: "Mechanical Engineer",
+        date: "Jul 2025 - Now",
       },
       {
         title: "Pointfit Tech Ltd",
@@ -45,6 +40,16 @@ export const contentData = [
                       • Device prototyping, BOM creation, device testing, Prototype showcasing, and conducting testing with HK PolyU.
                       • Engaged in presentations to clients(ASICS, Nike, Adidas, HK Government, HK PolyU, etc).
                       • Crowned as Grand Winner Prize of ASICS accelerator 3.0 with the newly designed product.`,
+      },
+      {
+        title: "Apple Inc",
+        subTitle: "iPhone Product design intern",
+        date: "Jul 2023 - Oct 2023",
+        description: `• Responsible for investigating assembly issues for mass production (iPhone), and on-site work in the Foxconn factory.
+                      • Finish a side project, programmed an app for pre-production inspection for design risks for iPhone.
+                      • Participate in fixture & housing design, aim improving overall production quality and yield.
+                      • Responsible for mass production assembly adjustment of a part, FR rate drop from >7% to <2%.
+                      • Inspect design & assembly issues using various inspection methods (CT, X-ray, force test, etc).`,
       },
       {
         title: "The Hong Kong University of Science and Technology - ISD",

@@ -168,7 +168,7 @@ const Resume = () => {
           </div>
         </div>
 
-        <div className='bg-deepPurple border border-white/[0.1] rounded-2xl shadow-md p-5'>
+        <div className='bg-deepPurple border border-white/[0.1] rounded-2xl shadow-md p-5' id="contact">
           <h3 className="mb-6">Contact</h3>
           <div className="flex flex-col gap-6">
             {generalData.contacts.map((contact, index) => {

@@ -57,5 +57,13 @@ export const timelineItems: TimelineItem[] = [
     date: 'Oct 2024 - Jun 2025',
     description: '• Research assistant for friction tester on human joints',
     type: 'work'
+  },
+  {
+    id: 'insta360',
+    title: 'Insta 360',
+    organization: 'Insta 360 - Mechanical Engineer',
+    date: 'Jul 2025 - Dec 2025',
+    description: '• Mechanical design for products',
+    type: 'work'
   }
 ]; 
