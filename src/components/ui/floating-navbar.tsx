@@ -9,6 +9,7 @@ import {
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { FaBook } from "react-icons/fa";
 
 export const FloatingNav = ({
   navItems,
@@ -50,8 +51,14 @@ export const FloatingNav = ({
               "relative text-neutral-50 font-semibold items-center flex space-x-1 lg:hover:text-purple md:hover:text-purple"
             )}
           >
-            <span className="block sm:hidden relative">{navItem.icon}</span>
-            <span className="hidden sm:block text-md relative">{navItem.name}</span>
+            {navItem.icon === "book" ? (
+              <span className="text-xl flex items-center justify-center"><FaBook /></span>
+            ) : (
+              <>
+                <span className="block sm:hidden relative">{navItem.icon}</span>
+                <span className="hidden sm:block text-md relative">{navItem.name}</span>
+              </>
+            )}
           </Link>
         ))}
         <LanguageSwitcher />

@@ -205,8 +205,7 @@ export const GanttTimeline: React.FC<GanttTimelineProps> = ({ items }) => {
         <div className="flex justify-between mb-4 text-xs text-slate-400">
           {yearMarkers.map(year => (
             <div key={year} className="text-center">
-              <div className="w-px h-2 bg-slate-600 mx-auto mb-1"></div>
-              {year}
+              {/* Both vertical line and year number removed */}
             </div>
           ))}
         </div>

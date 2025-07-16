@@ -62,7 +62,7 @@ export const timelineItemsCN: TimelineItem[] = [
     id: 'insta360',
     title: 'Insta 360',
     organization: 'Insta 360 - 机械工程师',
-    date: '2025年7月 - 2025年12月',
+    date: '2025年7月 - 现在',
     description: '• 产品机械设计',
     type: 'work'
   }

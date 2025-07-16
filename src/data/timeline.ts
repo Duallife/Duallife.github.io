@@ -62,7 +62,7 @@ export const timelineItems: TimelineItem[] = [
     id: 'insta360',
     title: 'Insta 360',
     organization: 'Insta 360 - Mechanical Engineer',
-    date: 'Jul 2025 - Dec 2025',
+    date: 'Jul 2025 - Now',
     description: '• Mechanical design for products',
     type: 'work'
   }
