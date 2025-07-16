@@ -28,7 +28,7 @@ const LanguageSwitcher: React.FC = () => {
       title={isChinesePage ? "Switch to English" : "切换到中文"}
     >
       <span className="hidden sm:block text-md relative items-center space-x-1">
-        <span>{currentLanguage}</span>
+        <span>CN/EN</span>
       </span>
     </motion.button>
   );
