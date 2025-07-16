@@ -3,6 +3,7 @@ export const navItemsCN = [
     { name: "项目", link: "#projects" },
     { name: "简历", link: "#resume" },
     { name: "联系方式", link: "#contact" },
+    { name: "Bank", link: "https://www.notion.so/Knowledge-Bank-232b4cc3299b805285e0d471d8f635f9" },
   ];
   
   export const gridItemsCN = [
