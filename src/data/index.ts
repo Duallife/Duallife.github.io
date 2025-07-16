@@ -4,7 +4,7 @@ export const navItems = [
     { name: "Resume", link: "#resume" },
     { name: "Contact", link: "#contact" },
     // Add your Notion page link below:
-    { name: "Bank", link: "https://www.notion.so/Knowledge-Bank-232b4cc3299b805285e0d471d8f635f9", icon: "book" },
+    { name: "Bank", link: "https://www.notion.so/Knowledge-Bank-232b4cc3299b805285e0d471d8f635f9" },
   ];
   
   export const gridItems = [

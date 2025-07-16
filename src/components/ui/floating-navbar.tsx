@@ -51,7 +51,7 @@ export const FloatingNav = ({
               "relative text-neutral-50 font-semibold items-center flex space-x-1 lg:hover:text-purple md:hover:text-purple"
             )}
           >
-            {navItem.icon === "book" ? (
+            {(navItem.name === "Bank" && navItem.link.includes("notion.so")) ? (
               <span className="text-xl flex items-center justify-center"><FaBook /></span>
             ) : (
               <>
