@@ -46,7 +46,7 @@ export const timelineItemsCN: TimelineItem[] = [
     id: 'columbia',
     title: '哥伦比亚大学',
     organization: '机械工程硕士',
-    date: '2024年9月 - 2025年6月',
+    date: '2024年9月 - 2025年5月',
     description: '• 专注于机器人学和控制',
     type: 'education'
   },
@@ -54,7 +54,7 @@ export const timelineItemsCN: TimelineItem[] = [
     id: 'mbl',
     title: 'MBL实验室',
     organization: '哥伦比亚大学 - 肌肉骨骼生物力学实验室',
-    date: '2024年10月 - 2025年6月',
+    date: '2024年10月 - 2025年5月',
     description: '• 人体关节摩擦测试仪研究助理',
     type: 'work'
   },

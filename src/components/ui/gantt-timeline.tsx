@@ -19,47 +19,66 @@ interface GanttTimelineProps {
   items: TimelineItem[];
 }
 
+// Month mapping for English and Chinese
+const monthMap: { [key: string]: number } = {
+  'Jan': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3, 'May': 4, 'Jun': 5,
+  'Jul': 6, 'Aug': 7, 'Sept': 8, 'Oct': 9, 'Nov': 10, 'Dec': 11,
+  '1月': 0, '2月': 1, '3月': 2, '4月': 3, '5月': 4, '6月': 5,
+  '7月': 6, '8月': 7, '9月': 8, '10月': 9, '11月': 10, '12月': 11
+};
+
 // Parse date string to Date object
 const parseDate = (dateStr: string): Date => {
-  const parts = dateStr.split(' - ');
-  const startDate = parts[0];
-  
-  // Handle different date formats
-  if (startDate.includes('Sept') || startDate.includes('9月')) {
-    return new Date(parseInt(startDate.split(' ')[1] || startDate.split('年')[0]), 8, 1); // September is month 8 (0-indexed)
-  } else if (startDate.includes('Jun') || startDate.includes('6月')) {
-    return new Date(parseInt(startDate.split(' ')[1] || startDate.split('年')[0]), 5, 1); // June is month 5 (0-indexed)
-  } else if (startDate.includes('Jul') || startDate.includes('7月')) {
-    return new Date(parseInt(startDate.split(' ')[1] || startDate.split('年')[0]), 6, 1); // July is month 6 (0-indexed)
-  } else if (startDate.includes('Oct') || startDate.includes('10月')) {
-    return new Date(parseInt(startDate.split(' ')[1] || startDate.split('年')[0]), 9, 1); // October is month 9 (0-indexed)
-  } else if (startDate.includes('Now') || startDate.includes('现在')) {
-    return new Date(); // Current date
-  } else if (startDate.includes('Dec') || startDate.includes('12月')) {
-    return new Date(parseInt(startDate.split(' ')[1] || startDate.split('年')[0]), 11, 1); // December is month 11 (0-indexed)
+  const startDateStr = dateStr.split(' - ')[0].trim();
+
+  if (startDateStr === 'Now' || startDateStr === '现在') {
+    return new Date();
   }
-  
-  // Default fallback
+
+  // Try to find month and year
+  for (const [monthName, monthIndex] of Object.entries(monthMap)) {
+    if (startDateStr.includes(monthName)) {
+      const yearMatch = startDateStr.match(/\d{4}/);
+      const year = yearMatch ? parseInt(yearMatch[0]) : 2020;
+      return new Date(year, monthIndex, 1);
+    }
+  }
+
+  // Year only or fallback
+  const yearMatch = startDateStr.match(/\d{4}/);
+  if (yearMatch) {
+    return new Date(parseInt(yearMatch[0]), 0, 1);
+  }
+
   return new Date(2020, 0, 1);
 };
 
 // Parse end date from date string
 const parseEndDate = (dateStr: string): Date => {
   const parts = dateStr.split(' - ');
-  const endDate = parts[1] || parts[0];
-  
-  if (endDate.includes('Now') || endDate.includes('现在')) {
+  const endDateStr = (parts[1] || parts[0]).trim();
+
+  if (endDateStr === 'Now' || endDateStr === '现在') {
     return new Date();
-  } else if (endDate.includes('Jun') || endDate.includes('6月')) {
-    return new Date(parseInt(endDate.split(' ')[1] || endDate.split('年')[0]), 5, 1);
-  } else if (endDate.includes('Oct') || endDate.includes('10月')) {
-    return new Date(parseInt(endDate.split(' ')[1] || endDate.split('年')[0]), 9, 1);
-  } else if (endDate.includes('Dec') || endDate.includes('12月')) {
-    return new Date(parseInt(endDate.split(' ')[1] || endDate.split('年')[0]), 11, 1);
   }
-  
-  // Default fallback
-  return new Date(2025, 11, 31);
+
+  // Try to find month and year
+  for (const [monthName, monthIndex] of Object.entries(monthMap)) {
+    if (endDateStr.includes(monthName)) {
+      const yearMatch = endDateStr.match(/\d{4}/);
+      const year = yearMatch ? parseInt(yearMatch[0]) : 2025;
+      // Set to end of month for end dates
+      return new Date(year, monthIndex + 1, 0);
+    }
+  }
+
+  // Year only or fallback
+  const yearMatch = endDateStr.match(/\d{4}/);
+  if (yearMatch) {
+    return new Date(parseInt(yearMatch[0]), 11, 31);
+  }
+
+  return new Date();
 };
 
 // Get color based on item type
@@ -68,7 +87,7 @@ const getItemColor = (type: 'education' | 'work' | 'project', isActive: boolean,
   if (itemId === 'hkust-ra') {
     return 'bg-emerald-600 hover:bg-emerald-500';
   }
-  
+
   switch (type) {
     case 'education':
       return 'bg-blue-600 hover:bg-blue-500';
@@ -87,7 +106,7 @@ const getItemIcon = (type: 'education' | 'work' | 'project', size: number = 12, 
   if (itemId === 'hkust-ra') {
     return <FaBriefcase size={size} />;
   }
-  
+
   switch (type) {
     case 'education':
       return <FaGraduationCap size={size} />;
@@ -104,7 +123,7 @@ export const GanttTimeline: React.FC<GanttTimelineProps> = ({ items }) => {
   const [activeItem, setActiveItem] = useState<string | null>(null);
   const pathname = usePathname();
   const isChinesePage = pathname === '/cn';
-  
+
   // Convert 'work' type to 'project' for specific items
   const processedItems = useMemo(() => {
     return items.map(item => {
@@ -115,61 +134,61 @@ export const GanttTimeline: React.FC<GanttTimelineProps> = ({ items }) => {
       return item;
     });
   }, [items]);
-  
+
   // Sort items by start date
   const sortedItems = [...processedItems].sort((a, b) => {
     return parseDate(a.date).getTime() - parseDate(b.date).getTime();
   });
-  
+
   // Find earliest and latest dates
-  const earliestDate = sortedItems.length > 0 
-    ? parseDate(sortedItems[0].date) 
+  const earliestDate = sortedItems.length > 0
+    ? parseDate(sortedItems[0].date)
     : new Date(2020, 0, 1);
-    
-  const latestDate = sortedItems.length > 0 
+
+  const latestDate = sortedItems.length > 0
     ? sortedItems.reduce((latest, item) => {
-        const endDate = parseEndDate(item.date);
-        return endDate > latest ? endDate : latest;
-      }, new Date(2020, 0, 1))
+      const endDate = parseEndDate(item.date);
+      return endDate > latest ? endDate : latest;
+    }, new Date(2020, 0, 1))
     : new Date();
-  
+
   // Add padding to the timeline (3 months on each side)
   const paddedEarliestDate = new Date(earliestDate);
   paddedEarliestDate.setMonth(paddedEarliestDate.getMonth() - 3);
   paddedEarliestDate.setFullYear(2020); // Force start at 2020
-  
+
   const paddedLatestDate = new Date(latestDate);
   paddedLatestDate.setMonth(paddedLatestDate.getMonth() + 3);
-  
+
   // Generate year markers with fixed spacing
   const yearMarkers = [];
   for (let year = 2020; year <= 2025; year++) {
     yearMarkers.push(year);
   }
-  
+
   // Calculate total timeline duration in months
-  const totalMonths = (paddedLatestDate.getFullYear() - paddedEarliestDate.getFullYear()) * 12 + 
-                     (paddedLatestDate.getMonth() - paddedEarliestDate.getMonth());
-  
+  const totalMonths = (paddedLatestDate.getFullYear() - paddedEarliestDate.getFullYear()) * 12 +
+    (paddedLatestDate.getMonth() - paddedEarliestDate.getMonth());
+
   // Organize items into rows to avoid overlap
   const organizedRows: TimelineItem[][] = [];
   const usedPositions: { [key: string]: boolean } = {};
-  
+
   sortedItems.forEach(item => {
     const startDate = parseDate(item.date);
     const endDate = parseEndDate(item.date);
-    
+
     // Calculate position and width
-    const startPosition = ((startDate.getTime() - paddedEarliestDate.getTime()) / 
-                          (paddedLatestDate.getTime() - paddedEarliestDate.getTime())) * 100;
-    const endPosition = ((endDate.getTime() - paddedEarliestDate.getTime()) / 
-                        (paddedLatestDate.getTime() - paddedEarliestDate.getTime())) * 100;
+    const startPosition = ((startDate.getTime() - paddedEarliestDate.getTime()) /
+      (paddedLatestDate.getTime() - paddedEarliestDate.getTime())) * 100;
+    const endPosition = ((endDate.getTime() - paddedEarliestDate.getTime()) /
+      (paddedLatestDate.getTime() - paddedEarliestDate.getTime())) * 100;
     const width = endPosition - startPosition;
-    
+
     // Find a row where this item doesn't overlap
     let rowIndex = 0;
     let foundRow = false;
-    
+
     while (!foundRow) {
       if (!organizedRows[rowIndex]) {
         organizedRows[rowIndex] = [];
@@ -179,14 +198,14 @@ export const GanttTimeline: React.FC<GanttTimelineProps> = ({ items }) => {
         const hasOverlap = organizedRows[rowIndex].some(existingItem => {
           const existingStart = parseDate(existingItem.date);
           const existingEnd = parseEndDate(existingItem.date);
-          const existingStartPos = ((existingStart.getTime() - paddedEarliestDate.getTime()) / 
-                                   (paddedLatestDate.getTime() - paddedEarliestDate.getTime())) * 100;
-          const existingEndPos = ((existingEnd.getTime() - paddedEarliestDate.getTime()) / 
-                                 (paddedLatestDate.getTime() - paddedEarliestDate.getTime())) * 100;
-          
+          const existingStartPos = ((existingStart.getTime() - paddedEarliestDate.getTime()) /
+            (paddedLatestDate.getTime() - paddedEarliestDate.getTime())) * 100;
+          const existingEndPos = ((existingEnd.getTime() - paddedEarliestDate.getTime()) /
+            (paddedLatestDate.getTime() - paddedEarliestDate.getTime())) * 100;
+
           return !(endPosition <= existingStartPos || startPosition >= existingEndPos);
         });
-        
+
         if (!hasOverlap) {
           foundRow = true;
         } else {
@@ -194,10 +213,10 @@ export const GanttTimeline: React.FC<GanttTimelineProps> = ({ items }) => {
         }
       }
     }
-    
+
     organizedRows[rowIndex].push(item);
   });
-  
+
   return (
     <div className="w-full">
       <div className="relative">
@@ -209,34 +228,33 @@ export const GanttTimeline: React.FC<GanttTimelineProps> = ({ items }) => {
             </div>
           ))}
         </div>
-        
+
         {/* Timeline items */}
         <div className="relative">
           {organizedRows.map((row, rowIndex) => (
             <div key={rowIndex} className="relative h-12 mb-3">
               {/* Row line */}
               <div className="absolute top-5 left-0 right-0 h-px bg-slate-700"></div>
-              
+
               {row.map((item) => {
                 const startDate = parseDate(item.date);
                 const endDate = parseEndDate(item.date);
-                
+
                 // Calculate position and width
-                const startPosition = ((startDate.getTime() - paddedEarliestDate.getTime()) / 
-                                      (paddedLatestDate.getTime() - paddedEarliestDate.getTime())) * 100;
-                const endPosition = ((endDate.getTime() - paddedEarliestDate.getTime()) / 
-                                    (paddedLatestDate.getTime() - paddedEarliestDate.getTime())) * 100;
+                const startPosition = ((startDate.getTime() - paddedEarliestDate.getTime()) /
+                  (paddedLatestDate.getTime() - paddedEarliestDate.getTime())) * 100;
+                const endPosition = ((endDate.getTime() - paddedEarliestDate.getTime()) /
+                  (paddedLatestDate.getTime() - paddedEarliestDate.getTime())) * 100;
                 const width = endPosition - startPosition;
-                
+
                 const isActive = activeItem === item.id;
-                
+
                 return (
-                  <motion.div 
+                  <motion.div
                     key={item.id}
-                    className={`absolute h-10 rounded-md flex items-center px-3 cursor-pointer transition-all ${
-                      getItemColor(item.type, isActive, item.id)
-                    } ${isActive ? 'z-10 ring-2 ring-white/20' : ''}`}
-                    style={{ 
+                    className={`absolute h-10 rounded-md flex items-center px-3 cursor-pointer transition-all ${getItemColor(item.type, isActive, item.id)
+                      } ${isActive ? 'z-10 ring-2 ring-white/20' : ''}`}
+                    style={{
                       left: `${Math.min(startPosition, 95)}%`,
                       width: `${Math.min(width, 100 - Math.min(startPosition, 95))}%`,
                       minWidth: '80px',
@@ -256,10 +274,10 @@ export const GanttTimeline: React.FC<GanttTimelineProps> = ({ items }) => {
             </div>
           ))}
         </div>
-        
+
         {/* Active item detail view */}
         {activeItem && (
-          <motion.div 
+          <motion.div
             className="relative mt-2 bg-deepPurple/80 border border-white/[0.1] rounded-lg p-4 shadow-xl z-20"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -276,7 +294,7 @@ export const GanttTimeline: React.FC<GanttTimelineProps> = ({ items }) => {
                     <p className="text-sm text-slate-300">{item.organization}</p>
                     <p className="text-xs text-slate-400 mt-1">{item.date}</p>
                   </div>
-                  <button 
+                  <button
                     className="text-slate-400 hover:text-white transition-colors"
                     onClick={(e) => {
                       e.stopPropagation();
@@ -294,7 +312,7 @@ export const GanttTimeline: React.FC<GanttTimelineProps> = ({ items }) => {
             ))}
           </motion.div>
         )}
-        
+
         {/* Legend */}
         <div className="flex items-center justify-center mt-6 space-x-6 text-xs">
           <div className="flex items-center">

@@ -135,7 +135,6 @@ const Resume = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="text-2xl text-center mb-3 text-slate-100">Career Timeline</h2>
         <div className="bg-deepPurple border border-white/[0.1] rounded-2xl shadow-md p-4">
           <GanttTimeline items={timelineItems} />
         </div>

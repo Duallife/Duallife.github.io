@@ -24,10 +24,10 @@ const HeroCN = () => {
           />
           <TextGenerateEffect
             className='uppercase tracking-widest font-light text-lg -mt-8 text-center lg:text-start'
-            words="欢迎来到我的个人网站"
+            words="欢迎 来到 我的 个人网站"
           />
-          
-          <motion.div 
+
+          <motion.div
             className="flex mt-6 space-x-4 justify-center lg:justify-start"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -53,7 +53,7 @@ const HeroCN = () => {
               className='text-sm text-center lg:text-end text-white font-light'
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 1, ease: "easeOut"}}
+              transition={{ duration: 1, ease: "easeOut" }}
             >
               {generalDataCN.about}
             </motion.p>

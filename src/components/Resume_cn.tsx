@@ -96,7 +96,7 @@ const ResumeCN = () => {
   return (
     <section id="resume" className='pt-7'>
       <hr className="border-t-2 border-slate-700 p-5 " />
-      <section  className="relative m-5">
+      <section className="relative m-5">
         <div className="text-center pb-4">
           <h1 className="mb-3 text-4xl text-slate-900 dark:text-slate-100 font-semibold">
             {generalDataCN.name}
@@ -122,20 +122,19 @@ const ResumeCN = () => {
           </a>
         </div>
       </section>
-      
+
       {/* Gantt Timeline */}
-      <motion.div 
+      <motion.div
         className="mb-8 px-4"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="text-2xl text-center mb-3 text-slate-100">时间线</h2>
         <div className="bg-deepPurple border border-white/[0.1] rounded-2xl shadow-md p-4">
           <GanttTimeline items={timelineItemsCN} />
         </div>
       </motion.div>
-      
+
       <div className='bg-deepPurple border border-white/[0.1] rounded-2xl shadow-md pb-1'>
         {contentDataCN.map((content, index) => {
           return <ContentCN {...content} key={index} />;

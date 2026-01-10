@@ -5,9 +5,8 @@ export const contentData = [
       {
         title: "Columbia University",
         subTitle: "M.S. - Mechanical Engineering",
-        date: "Sept 2024 - Now",
-        description: `• Musculoskeletal Biomechanics Lab - Research assistant for friction tester on human joints
-                      • Courseworks: Robotics, Control, Kinematics, Human centered design`,
+        date: "Sept 2024 - May 2025",
+        description: `• Courseworks: Robotics, Control, Kinematics, Human centered design`,
       },
       {
         title: "The Hong Kong University of Science and Technology",
@@ -40,6 +39,12 @@ export const contentData = [
                       • Device prototyping, BOM creation, device testing, Prototype showcasing, and conducting testing with HK PolyU.
                       • Engaged in presentations to clients(ASICS, Nike, Adidas, HK Government, HK PolyU, etc).
                       • Crowned as Grand Winner Prize of ASICS accelerator 3.0 with the newly designed product.`,
+      },
+      {
+        title: "Columbia University - Musculoskeletal Biomechanics Lab",
+        subTitle: "Research Assistant",
+        date: "Oct 2024 - May 2025",
+        description: `• Human joint friction tester research assistant`,
       },
       {
         title: "Apple Inc",

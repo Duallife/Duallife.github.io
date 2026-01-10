@@ -46,7 +46,7 @@ export const timelineItems: TimelineItem[] = [
     id: 'columbia',
     title: 'Columbia University',
     organization: 'M.S. - Mechanical Engineering',
-    date: 'Sept 2024 - Jun 2025',
+    date: 'Sept 2024 - May 2025',
     description: '• Concentration in Robotics and Control',
     type: 'education'
   },
@@ -54,7 +54,7 @@ export const timelineItems: TimelineItem[] = [
     id: 'mbl',
     title: 'MBL Lab',
     organization: 'Columbia University - Musculoskeletal Biomechanics Lab',
-    date: 'Oct 2024 - Jun 2025',
+    date: 'Oct 2024 - May 2025',
     description: '• Research assistant for friction tester on human joints',
     type: 'work'
   },
