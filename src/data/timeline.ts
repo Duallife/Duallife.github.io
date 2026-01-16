@@ -60,10 +60,10 @@ export const timelineItems: TimelineItem[] = [
   },
   {
     id: 'insta360',
-    title: 'Insta 360',
-    organization: 'Insta 360 - Mechanical Engineer',
+    title: 'Insta360',
+    organization: 'Insta360 - Product Design Engineer',
     date: 'Jul 2025 - Now',
-    description: '• Mechanical design for products',
+    description: '• PD representative for one of the newest main product lines. Lead communication with ODM.\n• Design multiple accessories for various different product lines, from prototype to MP stage.',
     type: 'work'
   }
 ]; 

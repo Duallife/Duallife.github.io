@@ -3,6 +3,7 @@ import Grid from "@/components/ui/Grid";
 import Hero from "@/components/Hero";
 import Nav from "@/components/Nav";
 import Resume from "@/components/Resume";
+import RobotArmShowcase from "@/components/RobotArmShowcase";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         <Nav />
         <Hero />
         <Grid />
+        <RobotArmShowcase language="en" />
         <Resume />
         <Footer />
       </div>

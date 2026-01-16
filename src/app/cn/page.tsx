@@ -3,6 +3,7 @@ import GridCN from "@/components/ui/Grid_cn";
 import HeroCN from "@/components/Hero_cn";
 import NavCN from "@/components/Nav_cn";
 import ResumeCN from "@/components/Resume_cn";
+import RobotArmShowcase from "@/components/RobotArmShowcase";
 
 export default function HomeCN() {
   return (
@@ -17,6 +18,7 @@ export default function HomeCN() {
         <NavCN />
         <HeroCN />
         <GridCN />
+        <RobotArmShowcase language="cn" />
         <ResumeCN />
         <FooterCN />
       </div>

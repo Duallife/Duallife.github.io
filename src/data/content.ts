@@ -27,9 +27,11 @@ export const contentData = [
     title: "Work Experience",
     items: [
       {
-        title: "Insta 360",
-        subTitle: "Mechanical Engineer",
+        title: "Insta360",
+        subTitle: "Product Design Engineer",
         date: "Jul 2025 - Now",
+        description: `• PD representative for one of the newest main product lines. Lead communication with ODM.
+                      • Design multiple accessories for various different product lines, from prototype to MP stage.`,
       },
       {
         title: "Pointfit Tech Ltd",

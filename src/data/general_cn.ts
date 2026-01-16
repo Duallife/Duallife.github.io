@@ -52,6 +52,7 @@ export const generalDataCN: GeneralData = {
         programming: [
             "Python C++ Javascript",
             "ROS2",
+            "ReactJs",
             "计算机视觉和路径规划"
         ],
         electronic: [

@@ -27,9 +27,16 @@ export const contentDataCN = [
     title: "工作经验",
     items: [
       {
+        title: "影石 Insta360",
+        subTitle: "结构工程师",
+        date: "2025年7月 - 至今",
+        description: `• 在研主线产品结构代表，组织与 ODM 的沟通。
+                      • 为不同产品线设计多个配件，从原型制作到量产阶段。`,
+      },
+      {
         title: "Pointfit科技有限公司",
         subTitle: "产品设计工程师",
-        date: "2022年6月 - 2025年6月",
+        date: "2022年6月 - 至今",
         description: `• 负责便携式生物标志物检测设备的设计和原型制作、材料选择和测试。用户体验设计。
                       • 设备原型制作、物料清单创建、设备测试、原型展示，并与香港理工大学进行测试。
                       • 参与向客户展示（ASICS、Nike、Adidas、香港政府、香港理工大学等）。
@@ -43,7 +50,7 @@ export const contentDataCN = [
       },
       {
         title: "苹果公司",
-        subTitle: "iPhone产品设计实习生",
+        subTitle: "iPhone PD intern",
         date: "2023年7月 - 2023年10月",
         description: `• 负责调查iPhone大规模生产的装配问题，并在富士康工厂进行现场工作。
                       • 完成一个副项目，为iPhone设计风险预生产检查编程了一个应用程序。

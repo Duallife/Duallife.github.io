@@ -53,6 +53,7 @@ export const generalData: GeneralData = {
         programming: [
             "Python C++ Javascript",
             "ROS2",
+            "ReactJs",
             "Computer vision and Path finding"
         ],
         electronic: [

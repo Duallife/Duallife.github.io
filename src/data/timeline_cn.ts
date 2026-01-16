@@ -22,7 +22,7 @@ export const timelineItemsCN: TimelineItem[] = [
     id: 'pointfit',
     title: 'Pointfit科技有限公司',
     organization: '产品设计工程师',
-    date: '2022年6月 - 2025年6月',
+    date: '2022年6月 - 至今',
     description: '• 负责便携式生物标志物检测设备的设计和原型制作、材料选择和测试。用户体验设计\n• 设备原型制作、物料清单创建、设备测试、原型展示，并与香港理工大学进行测试\n• 参与向客户展示（ASICS、Nike、Adidas、香港政府、香港理工大学等）\n• 凭借新设计的产品获得ASICS加速器3.0大奖',
     type: 'work'
   },
@@ -60,10 +60,10 @@ export const timelineItemsCN: TimelineItem[] = [
   },
   {
     id: 'insta360',
-    title: 'Insta 360',
-    organization: 'Insta 360 - 机械工程师',
-    date: '2025年7月 - 现在',
-    description: '• 产品机械设计',
+    title: '影石 Insta360',
+    organization: '影石 Insta360 - 结构工程师',
+    date: '2025年7月 - 至今',
+    description: '• 在研主线产品结构代表，组织与 ODM 的沟通。\n• 为不同产品线设计多个配件，从原型制作到量产阶段。',
     type: 'work'
   }
 ]; 
