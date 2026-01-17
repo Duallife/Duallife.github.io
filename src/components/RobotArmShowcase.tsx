@@ -2,9 +2,9 @@
 
 import React, { Suspense, useRef, useState, useEffect, useMemo } from 'react';
 import { Canvas, useLoader, useFrame } from '@react-three/fiber';
-import { STLLoader } from 'three/examples/jsm/loaders/STLLoader';
 import { OrbitControls, PerspectiveCamera, Environment, Float, ContactShadows, MeshDistortMaterial } from '@react-three/drei';
 import * as THREE from 'three';
+import { STLLoader } from 'three/examples/jsm/loaders/STLLoader.js';
 
 interface RobotArmShowcaseProps {
     language: 'en' | 'cn';
